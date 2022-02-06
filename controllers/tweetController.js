@@ -19,8 +19,9 @@ exports.getTweets = BigPromise(async (req, res, next) => {
 
 // POST add tweet
 exports.addTweet = BigPromise(async (req, res, next) => {
-  const { tweetMessage,author,authorEmail } = req.body;
+  const { tweetMessage, author, authorEmail, authorImg } = req.body;
 
+  // console.log(req.data);
   // Checking Email and Password are provided or not
   if (!authorEmail || !author) {
     next(new CustomError('Please Enter Email & Author name', 400))
@@ -39,7 +40,8 @@ exports.addTweet = BigPromise(async (req, res, next) => {
     // Create User with help of EMAIL & NAME
     const userObject = {
       author,
-      authorEmail
+      authorEmail,
+      authorImg
     }
     user = await User.create(userObject)
 
@@ -50,6 +52,7 @@ exports.addTweet = BigPromise(async (req, res, next) => {
     tweetMessage,
     author,
     authorEmail,
+    authorImg
   }
 
   const tweet = await Tweet.create(data)

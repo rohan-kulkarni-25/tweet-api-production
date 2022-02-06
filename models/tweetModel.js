@@ -13,6 +13,9 @@ const tweetSchema = new mongoose.Schema({
     type: String,
     required:[true,"Please provide author email"]
   },
+  authorImg: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
