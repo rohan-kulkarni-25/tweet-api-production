@@ -8,7 +8,7 @@ const cors = require('cors')
 // Regular Middlewares 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-// app.use(cros())
+app.use(cros())
 
 // Morgan Middleware 
 app.use(morgan('tiny'))
